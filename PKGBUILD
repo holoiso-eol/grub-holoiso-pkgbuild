@@ -125,7 +125,7 @@ prepare() {
 	sed 's| ro | rw |g' -i "util/grub.d/10_linux.in"
 
 	echo "Fix OS naming FS#33393..."
-	sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
+	sed 's|GNU/Linux|SteamOS|' -i "util/grub.d/10_linux.in"
 
 	echo "Pull in latest language files..."
 	./linguas.sh
