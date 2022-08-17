@@ -10,6 +10,11 @@ elif [ "${DEVICENAME}" == "AIR" ] || [ "${DEVICENAME}" == "AIR Pro" ]; then
         GRUB_GFXMODE=1080x1920x32
         GRUB_GFXPAYLOAD=keep
         GRUB_GFXPAYLOAD_LINUX=1080x1920x32
+elif [ "${DEVICENAME}" == "Jupiter 1" ] || [ "${DEVICENAME}" == "Valve Jupiter 1" ]; then
+        GRUB_CMDLINE_LINUX_DEFAULT="video=efifb fbcon=rotate:1 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
+        GRUB_GFXMODE=800x1280x32
+        GRUB_GFXPAYLOAD=keep
+        GRUB_GFXPAYLOAD_LINUX=800x1280x32
 elif [ "${DEVICENAME}" == "ONE XPLAYER" ] || [ "${DEVICENAME}" == "ONEXPLAYER mini-A07" ]; then
         GRUB_CMDLINE_LINUX_DEFAULT="video=efifb fbcon=rotate:3 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
         if [ "${DEVICENAME}" == "ONEXPLAYER mini-A07" ]; then
