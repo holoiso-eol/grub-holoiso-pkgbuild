@@ -19,15 +19,16 @@ jobs:
           find . -type f -print0 | xargs -0 dos2unix
           chown -R nobody:nobody .
           
-      - name: Build Arch package
-        run: |
-          su -s /bin/bash nobody -c "makepkg -s --nodeps && mkdir pkgout && mv *.tar.zst pkgout"
-          
       - name: Install GRUB dependecies
         run: |
           pacman -S 'git' 'rsync' 'xz' 'freetype2' 'ttf-dejavu' 'python' 'autogen'
           pacman -S 'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse2'
           pacman -S sh xz gettext device-mapper
+          
+      - name: Build Arch package
+        run: |
+          su -s /bin/bash nobody -c "makepkg -s --nodeps && mkdir pkgout && mv *.tar.zst pkgout"
+          
           
       - name: Add to arch repository
         run: |
