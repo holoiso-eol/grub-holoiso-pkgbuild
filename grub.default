@@ -1,4 +1,6 @@
 GRUB_TIMEOUT=5
+
+# Device specific configs
 DEVICENAME=$(cat /sys/devices/virtual/dmi/id/product_name)
 if [ "${DEVICENAME}" == "Win600" ] || [ "${DEVICENAME}" == "Anbernic Win600" ]; then
         GRUB_CMDLINE_LINUX_DEFAULT="video=efifb fbcon=rotate:1 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
@@ -29,3 +31,6 @@ elif [ "${DEVICENAME}" == "ONE XPLAYER" ] || [ "${DEVICENAME}" == "ONEXPLAYER mi
 else
         GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
 fi
+
+# Define "breeze" Steam Deck GRUB Theme here
+GRUB_THEME="/usr/share/grub/themes/breeze/theme.txt"

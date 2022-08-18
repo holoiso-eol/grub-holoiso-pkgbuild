@@ -40,6 +40,7 @@ jobs:
           su -s /bin/bash nobody -c "wget http://dl.thevakhovske.pw/pacman/holoiso/os/x86_64/holoiso.files.tar.gz -P pkgout"
           su -s /bin/bash nobody -c "wget http://dl.thevakhovske.pw/pacman/holoiso/os/x86_64/holoiso.files.tar.gz.old -P pkgout"
           su -s /bin/bash nobody -c "wget http://dl.thevakhovske.pw/pacman/holoiso/os/x86_64/holoiso.files.tar.xz -P pkgout"
+          su -s /bin/bash nobody -c "mv pkgout/*.pkg.tar.zst pkgout/grub2_2.06.r297.holoiso.snapshot$(date +%Y%m%d.%H%M).pkg.tar.zst"
           su -s /bin/bash nobody -c "repo-add pkgout/holoiso.db.tar.gz pkgout/*.tar.zst"
       - uses: actions/upload-artifact@v2
         with:
