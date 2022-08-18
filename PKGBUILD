@@ -37,7 +37,7 @@ provides=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
 
 makedepends=('git' 'rsync' 'xz' 'freetype2' 'ttf-dejavu' 'python' 'autogen'
              'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse2')
-depends=('sh' 'xz' 'gettext' 'device-mapper')
+depends=('sh' 'xz' 'gettext' 'device-mapper' 'breeze-grub')
 optdepends=('freetype2: For grub-mkfont usage'
             'fuse2: For grub-mount usage'
             'dosfstools: For grub-mkrescue FAT FS and EFI support'

@@ -23,7 +23,7 @@ jobs:
         run: |
           pacman --noconfirm -S 'git' 'rsync' 'xz' 'freetype2' 'ttf-dejavu' 'python' 'autogen'
           pacman --noconfirm -S 'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse2'
-          pacman --noconfirm -S sh xz gettext device-mapper
+          pacman --noconfirm -S sh xz gettext device-mapper breeze-grub
           
       - name: Build Arch package
         run: |
