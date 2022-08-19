@@ -2,32 +2,22 @@ GRUB_TIMEOUT=5
 
 # Device specific configs
 DEVICENAME=$(cat /sys/devices/virtual/dmi/id/product_name)
-if [ "${DEVICENAME}" == "Win600" ] || [ "${DEVICENAME}" == "Anbernic Win600" ]; then
+# OXP Devices
+OXP_LIST="ONE XPLAYER:ONEXPLAYER 1 T08:ONEXPLAYER 1S A08:ONEXPLAYER 1S T08:ONEXPLAYER mini A07:ONEXPLAYER mini GA72:ONEXPLAYER mini GT72:ONEXPLAYER GUNDAM GA72:ONEXPLAYER 2 ARP23"
+# AYANEO AIR Devices
+AIR_LIST="AIR:AIR Pro"
+# AYANEO Gen 1 Devices
+AYA_LIST="Next:Some fucking thing i don't own right now"
+
+# Define default cmdlines for each device family
+if [ "${DEVICENAME}" == "Win600" ]; then
         GRUB_CMDLINE_LINUX_DEFAULT="video=efifb fbcon=rotate:1 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
-        GRUB_GFXMODE=720x1280x32
-        GRUB_GFXPAYLOAD=keep
-        GRUB_GFXPAYLOAD_LINUX=720x1280x32
-elif [ "${DEVICENAME}" == "AIR" ] || [ "${DEVICENAME}" == "AIR Pro" ]; then
+elif [[ ":$AIR_LIST:" =~ ":$DEVICENAME:"  ]]; then
         GRUB_CMDLINE_LINUX_DEFAULT="video=efifb fbcon=rotate:3 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
-        GRUB_GFXMODE=1080x1920x32
-        GRUB_GFXPAYLOAD=keep
-        GRUB_GFXPAYLOAD_LINUX=1080x1920x32
-elif [ "${DEVICENAME}" == "Jupiter 1" ] || [ "${DEVICENAME}" == "Valve Jupiter 1" ]; then
+elif [ "${DEVICENAME}" == "Jupiter 1" ]; then
         GRUB_CMDLINE_LINUX_DEFAULT="video=efifb fbcon=rotate:1 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
-        GRUB_GFXMODE=800x1280x32
-        GRUB_GFXPAYLOAD=keep
-        GRUB_GFXPAYLOAD_LINUX=800x1280x32
-elif [ "${DEVICENAME}" == "ONE XPLAYER" ] || [ "${DEVICENAME}" == "ONEXPLAYER mini-A07" ]; then
+elif [[ ":$OXP_LIST:" =~ ":$DEVICENAME:"  ]]; then
         GRUB_CMDLINE_LINUX_DEFAULT="video=efifb fbcon=rotate:3 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
-        if [ "${DEVICENAME}" == "ONEXPLAYER mini-A07" ]; then
-          GRUB_GFXMODE=1200x1920x32
-          GRUB_GFXPAYLOAD=keep
-          GRUB_GFXPAYLOAD_LINUX=1200x1920x32
-        else
-          GRUB_GFXMODE=1600x2560x32
-          GRUB_GFXPAYLOAD=keep
-          GRUB_GFXPAYLOAD_LINUX=1200x2560x32
-        fi
 else
         GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
 fi
