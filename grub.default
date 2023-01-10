@@ -5,9 +5,9 @@ DEVICENAME=$(cat /sys/devices/virtual/dmi/id/product_name)
 # OXP Devices
 OXP_LIST="ONE XPLAYER:ONEXPLAYER 1 T08:ONEXPLAYER 1S A08:ONEXPLAYER 1S T08:ONEXPLAYER mini A07:ONEXPLAYER mini GA72:ONEXPLAYER mini GT72:ONEXPLAYER GUNDAM GA72:ONEXPLAYER 2 ARP23:ONEXPLAYER Mini Pro"
 # AYANEO Gen 1 Devices
-AYANEO_GEN1_LIST="NEXT:NEXT Pro:NEXT Advance:AYANEO NEXT:AYANEO NEXT Pro:AYANEO NEXT Advance:AYA NEO Fouder:AYA NEO 2021:AYANEO 2021:AYANEO 2021 Pro:AYANEO 2021 Pro:AYANEO 2021 Pro Retro Power"
+AYANEO_LEFT_ROTATED_DEVICES="NEXT:NEXT Pro:NEXT Advance:AYANEO NEXT:AYANEO NEXT Pro:AYANEO NEXT Advance:AYA NEO Fouder:AYA NEO 2021:AYANEO 2021:AYANEO 2021 Pro:AYANEO 2021 Pro:AYANEO 2021 Pro Retro Power:AYANEO 2"
 # AYANEO Gen 2 Devices
-AYANEO_GEN2_LIST="AIR:AIR Pro:AYANEO 2"
+AYANEO_RIGHT_ROTATED_DEVICES="AIR:AIR Pro"
 # AOKZOE Devices
 AOK_LIST="AOKZOE A1 AR07"
 # GPD Devices
@@ -30,11 +30,11 @@ elif [ ":$GPD_LIST:" =~ ":$DEVICENAME:"  ]; then
         GRUB_CMDLINE_LINUX_DEFAULT="video=efifb fbcon=rotate:0 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
         GRUB_DEFAULT="Advanced options for SteamOS>SteamOS, with Linux linux-holoiso"
         GRUB_SAVEDEFAULT="false"
-elif [ ":$AYANEO_GEN1_LIST:" =~ ":$DEVICENAME:"  ]; then
+elif [ ":$AYANEO_LEFT_ROTATED_DEVICES:" =~ ":$DEVICENAME:"  ]; then
         GRUB_CMDLINE_LINUX_DEFAULT="video=efifb fbcon=rotate:1 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
         GRUB_DEFAULT="Advanced options for SteamOS>SteamOS, with Linux linux-holoiso"
         GRUB_SAVEDEFAULT="false"
-elif [ ":$AYANEO_GEN2_LIST:" =~ ":$DEVICENAME:"  ]; then
+elif [ ":$AYANEO_RIGHT_ROTATED_DEVICES:" =~ ":$DEVICENAME:"  ]; then
         GRUB_CMDLINE_LINUX_DEFAULT="video=efifb fbcon=rotate:3 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
         GRUB_DEFAULT="Advanced options for SteamOS>SteamOS, with Linux linux-holoiso"
         GRUB_SAVEDEFAULT="false"
